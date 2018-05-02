@@ -9,7 +9,6 @@ import recorderLogoActive from "../img/recorder-active.png";
 const RecButton = styled.img`
   width: 200px;
   height: 200px;
-  margin: 0px auto;
   cursor: pointer;
 `;
 
@@ -19,7 +18,8 @@ class MyRecorder extends Component {
 
     this.state = {
       status: "inactive",
-      text: "",
+      transcript: "",
+      result: {},
       url:
         "ws://localhost:8080/client/ws/speech?content-type=audio/x-raw,+layout=(string)interleaved,+rate=(int)44100,+format=(string)S16LE,+channels=(int)1"
     };
@@ -46,10 +46,12 @@ class MyRecorder extends Component {
         if (res.result) {
           console.log("receive result: " + res.result);
           if (res.result.final) {
-            __this.setState({
-              text: res.result.hypotheses[0].transcript
-            });
             __this.stopListening();
+            console.log(res.result.hypotheses[0].transcript);
+            __this.props.onTranscript(res.result.hypotheses[0].transcript);
+            __this.setState({
+              transcript: res.result.hypotheses[0].transcript
+            });
             __this.callApi(res.result.hypotheses[0].transcript);
           }
         }
@@ -169,7 +171,6 @@ class MyRecorder extends Component {
   }
 
   callApi(result) {
-    console.log(`http://192.168.43.44:5000/asr?x=${result}`);
     axios
       .get(encodeURI(`http://192.168.43.44:5000/asr?x=${result}`))
       .then(function(response) {
@@ -177,6 +178,10 @@ class MyRecorder extends Component {
       })
       .then(function(data) {
         console.log(data);
+        this.props.onResult(data);
+        this.setState({
+          result: data
+        });
       })
       .catch(function(error) {
         console.log(error);

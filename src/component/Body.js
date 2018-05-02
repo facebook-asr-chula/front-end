@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import MyRecorder from "./MyRecorder";
+import ResultBox from "./ResultBox";
 
 const Main = styled.div`
   background: #afbdd4
@@ -17,23 +18,27 @@ const Main = styled.div`
 const RecContainer = styled.div`
   padding: 40px 0px;
   text-align: center;
+  display: flex;
+  width: 800px;
+  margin: 0px auto;
 `;
 
 const ResultContainer = styled.div`
   padding: 20px 0px;
 `;
 
-const ResultBox = styled.div`
-  background: #d8dfea;
-  width: 80%;
-  height: 330px;
-  margin 0px auto;
-  padding 40px; 0px;
-  border-radius: 15px;
-  border: 1px solid transparent;
-  border-top: none;
-  border-bottom: 1px solid #DDD;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+const TranslationBox = styled.div`
+  width: 600px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  text-align: left;
+  padding: 0px 20px;
+  border: 1px solid #cdcdcd;
+  border-color: rgba(0, 0, 0, 0.15);
+  background-color: white;
+  margin: 65px 0px;
+  margin-left: 100px;
 `;
 
 class MainBox extends Component {
@@ -41,18 +46,45 @@ class MainBox extends Component {
     super(props);
 
     this.state = {
-      recorderStatus: "inactive"
+      recorderStatus: "inactive",
+      type: 99,
+      transcript: "my translation...",
+      result: {
+        type: 99
+      }
     };
+
+    this.onTranscript = this.onTranscript.bind(this);
+    this.onResult = this.onResult.bind(this);
+  }
+
+  onTranscript(t) {
+    console.log("call onTransript" + t);
+    this.setState({
+      transcript: t
+    });
+  }
+
+  onResult(r) {
+    console.log("call onResult" + r);
+    this.setState({
+      result: r,
+      type: r.type
+    });
   }
 
   render() {
     return (
       <Main>
         <RecContainer>
-          <MyRecorder />
+          <MyRecorder
+            onResult={this.onResult}
+            onTranscript={this.onTranscript}
+          />
+          <TranslationBox>{this.state.transcript}</TranslationBox>
         </RecContainer>
         <ResultContainer>
-          <ResultBox />
+          <ResultBox type={this.state.type} data={this.state.result} />
         </ResultContainer>
       </Main>
     );
