@@ -47,11 +47,8 @@ class MainBox extends Component {
 
     this.state = {
       recorderStatus: "inactive",
-      type: 99,
-      transcript: "my translation...",
-      result: {
-        type: 99
-      }
+      type: 0,
+      transcript: "my translation..."
     };
 
     this.onTranscript = this.onTranscript.bind(this);
