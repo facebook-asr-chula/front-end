@@ -7,7 +7,8 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.4",
-    "recorderjs": "git+https://github.com/mattdiamond/Recorderjs.git"
+    "recorderjs": "git+https://github.com/mattdiamond/Recorderjs.git",
+    "styled-components": "^3.2.6"
   },
   "scripts": {
     "start": "react-scripts start",
