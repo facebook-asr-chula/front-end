@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import MyRecorder from "./MyRecorder";
-import ResultBox from "./ResultBox";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import MyRecorder from './MyRecorder';
+import ResultBox from './ResultBox';
 
-const responsiveVoice = window.responsiveVoice;
+// const responsiveVoice = window.responsiveVoice;
 
 const Main = styled.div`
   background: #afbdd4
@@ -20,7 +20,7 @@ const RecContainer = styled.div`
   padding: 40px 0px;
   text-align: center;
   display: flex;
-  width: 800px;
+  width: 1000px;
   margin: 0px auto;
 `;
 
@@ -29,7 +29,7 @@ const ResultContainer = styled.div`
 `;
 
 const TranslationBox = styled.div`
-  width: 600px;
+  width: 100%;
   height: 50px;
   line-height: 50px;
   font-size: 20px;
@@ -48,7 +48,7 @@ class MainBox extends Component {
 
     this.state = {
       type: 0,
-      transcript: "my translation..."
+      transcript: 'my translation...'
     };
 
     this.onTranscript = this.onTranscript.bind(this);
@@ -56,32 +56,32 @@ class MainBox extends Component {
   }
 
   onTranscript(t) {
-    console.log("call onTransript" + t);
+    //console.log('call onTransript' + t);
     this.setState({
       transcript: t
     });
   }
 
   onResult(r) {
-    console.log("call onResult" + r);
+    //console.log('call onResult' + r);
     this.setState({
       result: r,
-      type: r.type
+      type: r['type'],
+      transcript: r.sentence
     });
 
-    if (responsiveVoice.voiceSupport()) {
-      responsiveVoice.speak(r.script, "Thai Female");
-    }
+    console.log(this.state);
+
+    // if (responsiveVoice.voiceSupport()) {
+    //   responsiveVoice.speak(r.script, 'Thai Female');
+    // }
   }
 
   render() {
     return (
       <Main>
         <RecContainer>
-          <MyRecorder
-            onResult={this.onResult}
-            onTranscript={this.onTranscript}
-          />
+          <MyRecorder onResult={this.onResult} onTranscript={this.onTranscript} />
           <TranslationBox>{this.state.transcript}</TranslationBox>
         </RecContainer>
         <ResultContainer>

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import styled from "styled-components";
+import React, { Component } from 'react';
+import styled from 'styled-components';
 
 const Header = styled.div`
   width: 100%;
@@ -14,7 +14,7 @@ const Header = styled.div`
   left: 0;
 `;
 
-const Text = styled.p`
+const Text = styled.b`
   color: #ffffff;
   font-size: 25px;
   padding: 0px;

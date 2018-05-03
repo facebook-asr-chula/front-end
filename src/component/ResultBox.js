@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import Feed from "./Facebook/Feed";
-import FriendBox from "./Facebook/FriendBox";
-import FriendOfFriend from "./Facebook/FriendOfFriend";
-import FeedList from "./Facebook/FeedList";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import Feed from './Facebook/Feed';
+import FriendBox from './Facebook/FriendBox';
+import FriendOfFriend from './Facebook/FriendOfFriend';
+import FeedList from './Facebook/FeedList';
 
 const Container = styled.div`
   background: #d8dfea;
   width: 80%;
-  height: 330px;
+  height: 370px;
   overflow: scroll;
   margin 0px auto;
   padding 40px 0px;
@@ -35,47 +35,21 @@ class ResultBox extends Component {
         {type === 1 && (
           <div>
             {data.data.map((object, i) => {
-              return (
-                <Feed
-                  pic={data.pic}
-                  name={data.name}
-                  message={object.message}
-                  time={object.time}
-                  likeOrShare={"none"}
-                  key={i}
-                />
-              );
+              return <Feed pic={data.pic} name={data.name} message={object.message} time={object.time} likeOrShare={'none'} key={i} />;
             })}
           </div>
         )}
         {type === 2 && (
           <div>
             {data.data.map((object, i) => {
-              return (
-                <Feed
-                  pic={data.pic}
-                  name={data.name}
-                  message={object.message}
-                  likeOrShare={"like"}
-                  count={object.count}
-                  key={i}
-                />
-              );
+              return <Feed pic={data.pic} name={data.name} message={object.message} likeOrShare={'like'} count={object.count} key={i} />;
             })}
           </div>
         )}
         {type === 3 && (
           <div>
             {data.data.map((object, i) => {
-              return (
-                <Feed
-                  pic={data.pic}
-                  name={data.name}
-                  message={object.message}
-                  commentList={object.data}
-                  key={i}
-                />
-              );
+              return <Feed pic={data.pic} name={data.name} message={object.message} commentList={object.data} key={i} />;
             })}
           </div>
         )}
@@ -89,42 +63,21 @@ class ResultBox extends Component {
         {type === 5 && (
           <div>
             {data.data.map((object, i) => {
-              return (
-                <FriendBox
-                  pic={object.pic}
-                  name={object.name}
-                  count={object.count}
-                  key={i}
-                />
-              );
+              return <FriendBox pic={object.pic} name={object.name} count={object.count} key={i} />;
             })}
           </div>
         )}
         {type === 6 && (
           <div>
             {data.data.map((object, i) => {
-              return (
-                <FriendOfFriend
-                  pic={object.pic}
-                  name={object.name}
-                  friendList={object.data}
-                  key={i}
-                />
-              );
+              return <FriendOfFriend pic={object.pic} name={object.name} friendList={object.data} key={i} />;
             })}
           </div>
         )}
         {type === 7 && (
           <div>
             {data.data.map((object, i) => {
-              return (
-                <FeedList
-                  pic={object.pic}
-                  name={object.name}
-                  feedList={object.data}
-                  key={i}
-                />
-              );
+              return <FeedList pic={object.pic} name={object.name} feedList={object.data} key={i} />;
             })}
           </div>
         )}

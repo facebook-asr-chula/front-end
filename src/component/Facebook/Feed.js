@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import Comment from "./Comment";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import Comment from './Comment';
 
 const FeedBox = styled.div`
   width: 550px;
@@ -49,15 +49,7 @@ const Text = styled.p`
 
 class Feed extends Component {
   render() {
-    const {
-      pic,
-      name,
-      time,
-      message,
-      count,
-      likeOrShare,
-      commentList
-    } = this.props;
+    const { pic, name, time, message, count, likeOrShare, commentList } = this.props;
 
     return (
       <FeedBox>
@@ -73,24 +65,18 @@ class Feed extends Component {
         <Content>
           <Text>{message}</Text>
         </Content>
-        {likeOrShare !== "none" && (
+        {likeOrShare !== 'none' && (
           <div>
             <hr />
             <LikeBox>
-              <b>{count + " " + likeOrShare}</b>
+              <b>{count + ' Like/Share'}</b>
             </LikeBox>
           </div>
         )}
         {commentList && (
           <CommentBox>
             {commentList.map((object, i) => {
-              return (
-                <Comment
-                  pic={object.pic}
-                  name={object.name}
-                  message={object.message}
-                />
-              );
+              return <Comment pic={object.pic} name={object.name} message={object.message} />;
             })}
           </CommentBox>
         )}
@@ -100,10 +86,10 @@ class Feed extends Component {
 }
 
 Feed.defaultProps = {
-  pic: "https://i.imgur.com/4KUbROk.png",
-  name: "Firstname M. Lastname",
-  message: "Hello World",
-  likeOrShare: "none",
+  pic: 'https://i.imgur.com/4KUbROk.png',
+  name: 'Firstname M. Lastname',
+  message: 'Hello World',
+  likeOrShare: 'none',
   commentList: undefined
 };
 

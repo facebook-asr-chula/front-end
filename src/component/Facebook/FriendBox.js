@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import styled from "styled-components";
+import React, { Component } from 'react';
+import styled from 'styled-components';
 
 const Container = styled.div`
   border: 1px solid lightgrey;
@@ -45,7 +45,7 @@ class FriendBox extends Component {
         {count && (
           <NameWithLike>
             <b>{name}</b>
-            <p>{count + `${this.isNumeric(count) ? " Like" : ""}`}</p>
+            <p>{count + `${this.isNumeric(count) ? ' Like' : ''}`}</p>
           </NameWithLike>
         )}
       </Container>
@@ -54,8 +54,8 @@ class FriendBox extends Component {
 }
 
 FriendBox.defaultProps = {
-  pic: "https://i.imgur.com/4KUbROk.png",
-  name: "Firstname M. Lastname"
+  pic: 'https://i.imgur.com/4KUbROk.png',
+  name: 'Firstname M. Lastname'
 };
 
 export default FriendBox;
