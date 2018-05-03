@@ -174,9 +174,8 @@ class MyRecorder extends Component {
 
   callApi(result) {
     const __this = this;
-    console.log(encodeURI(`http://172.20.10.4:5000/asr?x=${result}`));
     axios
-      .get(encodeURI(`http://172.20.10.4:5000/asr?x=${result}`))
+      .get(encodeURI(`http://localhost:5000/asr?x=${result}`))
       .then(function(response) {
         return response.data;
       })
