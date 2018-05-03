@@ -4,11 +4,13 @@ import Feed from "./Feed";
 
 const Container = styled.div`
   width: 600px;
+  max-height: 500px;
   background: #ffffff;
   border-radius: 5px;
   border: 1px solid lightgrey;
   padding: 10px;
   margin: 10px auto;
+  overflow: scroll;
 `;
 
 class FriendOfFriend extends Component {

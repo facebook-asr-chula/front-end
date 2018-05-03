@@ -34,7 +34,8 @@ storiesOf("Facebook Component", module)
     <Feed comment={true} commentList={[{}, {}, {}, {}, {}, {}]} />
   ))
   .add("type 4", () => <FriendBox />)
-  .add("type 5", () => <FriendBox isPage={true} count={200} />)
+  .add("type 5 (page like)", () => <FriendBox count={200} />)
+  .add("type 5 (user os)", () => <FriendBox count={"Android"} />)
   .add("type 6", () => <FriendOfFriend friendList={[{}, {}, {}, {}, {}]} />)
   .add("type 7", () => (
     <FeedList

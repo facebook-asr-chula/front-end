@@ -11,7 +11,7 @@ const Container = styled.div`
   height: 330px;
   overflow: scroll;
   margin 0px auto;
-  padding 40px; 0px;
+  padding 40px 0px;
   border-radius: 15px;
   border: 1px solid transparent;
   border-top: none;

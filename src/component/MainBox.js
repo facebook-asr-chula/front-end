@@ -3,13 +3,14 @@ import styled from "styled-components";
 import MyRecorder from "./MyRecorder";
 import ResultBox from "./ResultBox";
 
+const responsiveVoice = window.responsiveVoice;
+
 const Main = styled.div`
   background: #afbdd4
   position: fixed; 
   top: 0; 
   left: 0; 
-	
-  /* Preserve aspet ratio */
+	 
   min-width: 100%;
   min-height: 100%;
   padding-top: 44px;
@@ -46,7 +47,6 @@ class MainBox extends Component {
     super(props);
 
     this.state = {
-      recorderStatus: "inactive",
       type: 0,
       transcript: "my translation..."
     };
@@ -68,6 +68,10 @@ class MainBox extends Component {
       result: r,
       type: r.type
     });
+
+    if (responsiveVoice.voiceSupport()) {
+      responsiveVoice.speak(r.script, "Thai Female");
+    }
   }
 
   render() {

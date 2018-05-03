@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "./component/Header";
-import MainBox from "./component/Body";
+import MainBox from "./component/MainBox";
 
 class App extends Component {
   render() {

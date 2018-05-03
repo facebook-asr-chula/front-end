@@ -27,6 +27,10 @@ const NameWithLike = styled.div`
 `;
 
 class FriendBox extends Component {
+  isNumeric(num) {
+    return !isNaN(num);
+  }
+
   render() {
     const { pic, name, count } = this.props;
 
@@ -41,7 +45,7 @@ class FriendBox extends Component {
         {count && (
           <NameWithLike>
             <b>{name}</b>
-            <p>{count + " Like"}</p>
+            <p>{count + `${this.isNumeric(count) ? " Like" : ""}`}</p>
           </NameWithLike>
         )}
       </Container>
